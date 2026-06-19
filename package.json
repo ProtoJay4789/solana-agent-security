@@ -1,0 +1,19 @@
+{
+  "name": "solana-agent-security",
+  "version": "1.0.0",
+  "description": "Agent security skill for Solana — detect drain patterns, approve abuse, phishing, honeypots, and suspicious transactions",
+  "main": "src/engine.js",
+  "bin": {
+    "solana-security": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --forceExit",
+    "start": "node src/cli.js"
+  },
+  "keywords": ["solana", "security", "agent", "drain-detection", "honeypot", "approval-monitoring"],
+  "author": "GenTech Labs",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
