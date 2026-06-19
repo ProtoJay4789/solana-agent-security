@@ -63,6 +63,91 @@ solana-security-skill/
 └── package.json
 ```
 
+## Demo
+
+### Quick Token Check
+```bash
+# Check if a token is safe
+$ node src/cli.js check-token So11111111111111111111111111111111111111112
+
+═══ Security Analysis ═══
+Risk: SAFE (Score: 0/100)
+No issues found.
+```
+
+### Unknown Token Detection
+```bash
+$ node src/cli.js check-token UnknownTokenMint111111111111111111111111111
+
+═══ Security Analysis ═══
+Risk: SAFE (Score: 10/100)
+
+Findings (1):
+  [MEDIUM] Unknown Token
+    Token not in known registry — exercise caution
+
+Recommendations:
+  → Verify token on Solscan before trading
+  → Check LP lock status on RugCheck or similar
+```
+
+### Program Verification
+```bash
+$ node src/cli.js verify-program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc
+
+═══ Security Analysis ═══
+Risk: SAFE (Score: 0/100)
+
+Findings (1):
+  [INFO] Known Program
+    Orca Whirlpool
+```
+
+### Full Wallet Scan
+```bash
+$ node src/cli.js scan --wallet ABC123...
+
+═══ Security Analysis ═══
+Risk: LOW (Score: 15/100)
+
+Findings (2):
+  [INFO] Approval Scan
+    Scanning approvals for wallet ABC123... (7 days)
+  [INFO] Agent Audit
+    Auditing agent ABC123... for last 30 days
+
+Recommendations:
+  → Revoke unused approvals regularly
+  → Set spending limits
+  → Enable kill switch
+  → Monitor regularly
+```
+
+### Test Suite
+```bash
+$ npm test
+
+Tests: 16 passed, 16 total
+
+SecurityEngine
+  ✓ returns safe for known SPL Token program
+  ✓ returns safe for Token-2022
+  ✓ flags unknown token
+  ✓ findings have required fields
+  ✓ handles missing transaction gracefully
+  ✓ returns safe for known Orca program
+  ✓ flags unknown program
+  ✓ returns safe for Jupiter
+  ✓ returns analysis for any wallet
+  ✓ combines approvals and agent audit
+  ✓ contains SPL Token
+  ✓ contains Jupiter
+  ✓ contains Raydium
+  ✓ all entries have name and status
+  ✓ custom pattern is executed
+  ✓ custom pattern failure does not break engine
+```
+
 ## Why This Skill?
 
 ### The Problem
