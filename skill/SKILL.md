@@ -1,6 +1,6 @@
 ---
 name: solana-agent-security
-description: Agent security skill for Solana — detect drain patterns, approve abuse, phishing, honeypots, and suspicious transactions. Protects agents and users from malicious integrations. Use when checking token safety, verifying contracts, monitoring approvals, or auditing agent behavior.
+description: Protect agents and users from malicious transactions, drain patterns, and scam tokens on Solana. Use when the user says "check token safety", "is this token a scam", "analyze this transaction", "check approvals", "verify program", "audit agent", "drain detection", "honeypot check", "security check", or asks about transaction safety, approval risks, or agent behavior auditing.
 user-invocable: true
 ---
 
